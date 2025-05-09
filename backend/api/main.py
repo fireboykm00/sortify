@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import asyncio
+import os
 from contextlib import asynccontextmanager
 from routes import router
 from utils import ensure_directories, cleanup_old_files
@@ -21,7 +22,7 @@ app = FastAPI(title="File Organizer API", lifespan=lifespan)
 # Allow requests from the frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  
+    allow_origins=[os.environ.get("FRONTEND_URL", "*")], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

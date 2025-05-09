@@ -1,9 +1,10 @@
+import os
 from pathlib import Path
 
 
 
 # Base directory for file storage
-BASE_DIR = Path("/tmp/uploads")
+BASE_DIR = Path(os.environ.get("STORAGE_PATH", "/tmp/uploads"))
 
 # File type mapping
 FILE_TYPE_MAPPING = {

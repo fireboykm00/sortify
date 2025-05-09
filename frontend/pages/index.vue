@@ -12,7 +12,7 @@ const preview = ref<PreviewItem[]>([]);
 const organizedFiles = ref<string[]>([]);
 const sessionId = ref<string | null>(null);
 const downloadUrl = ref<string | null>(null);
-const apiBaseUrl = ref("http://localhost:8000"); // Update this to your API URL
+const apiBaseUrl = ref(import.meta.env.VITE_API_URL || "http://localhost:8000");
 
 const fileCount = computed(() => (files.value ? files.value.length : 0));
 const hasFiles = computed(() => fileCount.value > 0);
